@@ -35,4 +35,5 @@ export interface IHeaderProps {
   setTasks: Dispatch<SetStateAction<ITask[]>>;
   priority: string;
   tasks: ITask[];
+  placeholder: string;
 }

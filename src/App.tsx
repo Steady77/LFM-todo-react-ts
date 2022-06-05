@@ -37,6 +37,7 @@ function App() {
         <div className="todo__top">
           <Header
             title="HIGH"
+            placeholder="Добавить важных дел..."
             selector="todo__add-high"
             setTasks={setTasks}
             priority={PRIORITY.HIGH}
@@ -53,6 +54,7 @@ function App() {
         <div className="todo__bottom">
           <Header
             title="LOW"
+            placeholder="Добавить..."
             selector="todo__add-low"
             setTasks={setTasks}
             priority={PRIORITY.LOW}

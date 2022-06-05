@@ -1,7 +1,7 @@
 import { FC, FormEvent, useState } from 'react';
 import { IHeaderProps } from '../types';
 
-const Header: FC<IHeaderProps> = ({ title, selector, setTasks, priority, tasks }) => {
+const Header: FC<IHeaderProps> = ({ title, selector, setTasks, priority, tasks, placeholder }) => {
   const [inputValue, setInputValue] = useState('');
 
   const addTask = (event: FormEvent) => {
@@ -20,7 +20,7 @@ const Header: FC<IHeaderProps> = ({ title, selector, setTasks, priority, tasks }
           value={inputValue}
           className="todo__add-input"
           type="text"
-          placeholder="Добавить важных дел..."
+          placeholder={placeholder}
         />
         <button className="todo__add-btn"></button>
       </form>
