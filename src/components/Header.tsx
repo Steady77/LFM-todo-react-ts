@@ -1,6 +1,5 @@
 import { FC, FormEvent, useState } from 'react';
 import { IHeaderProps } from '../types';
-import { STATUS } from '../utils/consts';
 
 const Header: FC<IHeaderProps> = ({ title, selector, setTasks, priority, tasks }) => {
   const [inputValue, setInputValue] = useState('');
@@ -8,7 +7,7 @@ const Header: FC<IHeaderProps> = ({ title, selector, setTasks, priority, tasks }
   const addTask = (event: FormEvent) => {
     event.preventDefault();
     if (!inputValue) return;
-    setTasks([...tasks, { id: Date.now(), text: inputValue, status: STATUS.TO_DO, priority }]);
+    setTasks([...tasks, { id: Date.now(), text: inputValue, isDone: false, priority }]);
     setInputValue('');
   };
 

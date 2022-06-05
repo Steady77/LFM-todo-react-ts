@@ -1,11 +1,20 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Header from './components/Header';
 import List from './components/List';
 import { ITask } from './types';
-import { PRIORITY, STATUS } from './utils/consts';
+import { PRIORITY } from './utils/consts';
+import { getFromLocalStorage } from './utils/helpers';
 
 function App() {
-  const [tasks, setTasks] = useState<ITask[]>([]);
+  const [tasks, setTasks] = useState<ITask[]>(getFromLocalStorage());
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    } catch (error) {
+      console.log(error);
+    }
+  }, [tasks]);
 
   const deleteTask = (id: number) => {
     const tasksCopy = [...tasks].filter((task) => task.id !== id);
@@ -17,11 +26,7 @@ function App() {
     const findedTask: ITask | undefined = tasksCopy.find((task) => task.id === id);
 
     if (findedTask) {
-      findedTask.status =
-        findedTask.status === STATUS.DONE
-          ? (findedTask.status = STATUS.TO_DO)
-          : (findedTask.status = STATUS.DONE);
-
+      findedTask.isDone = !findedTask.isDone;
       setTasks(tasksCopy);
     }
   };

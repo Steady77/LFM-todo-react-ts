@@ -6,7 +6,7 @@ type ChangeTaskStatusType = (id: number) => void;
 export interface ITask {
   id: number;
   text: string;
-  status: string;
+  isDone: boolean;
   priority: string;
 }
 

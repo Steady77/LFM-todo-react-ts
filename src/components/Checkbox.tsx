@@ -1,19 +1,12 @@
-import { ChangeEvent, FC, useState } from 'react';
+import { FC } from 'react';
 import { ICheckboxProps } from '../types';
 
 const Checkbox: FC<ICheckboxProps> = ({ changeTaskStatus, task }) => {
-  const [checked, setChecked] = useState(false);
-
-  const onChangeCheckbox = (event: ChangeEvent<HTMLInputElement>) => {
-    setChecked(event.target.checked);
-    changeTaskStatus(task.id);
-  };
-
   return (
     <label className="todo__list-label">
       <input
-        onChange={onChangeCheckbox}
-        checked={checked}
+        onChange={() => changeTaskStatus(task.id)}
+        checked={task.isDone}
         className="todo__list-checkbox"
         type="checkbox"
       />
