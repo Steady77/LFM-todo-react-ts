@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from 'react';
+
 type DeleteTaskType = (id: number) => void;
 type ChangeTaskStatusType = (id: number) => void;
 
@@ -30,7 +32,7 @@ export interface ITaskProps {
 export interface IHeaderProps {
   title: string;
   selector: string;
-  setTasks: any;
+  setTasks: Dispatch<SetStateAction<ITask[]>>;
   priority: string;
   tasks: ITask[];
 }
